@@ -1,0 +1,116 @@
+<form method="POST" action="/user/save">
+    {% if user %}
+        <input type="text" name="id" value="{{ user.id }}" hidden readonly>
+    {% endif %}
+
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control has-icons-left">
+          <input type="text" name="firstName" class="input" placeholder="First Name" value="{{ user.firstName if user }}" required> 
+          <span class="icon is-left">
+            <i class="fa-solid fa-user"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Last Name</label>
+        <div class="control has-icons-left">
+          <input type="text" name="lastName" class="input" placeholder="Last Name" value="{{ user.lastName if user }}" required>
+          <span class="icon is-left">
+            <i class="fa-solid fa-user"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Document Type</label>
+        <div class="select has-icons-left">
+          <span class="icon is-left">
+            <i class="fas fa-id-card"></i>
+          </span>
+          <div class="select">
+            <select name="documentType" required>
+              <option value="" disabled>Select an option</option>
+              <option value="CI">CI</option>
+              <option value="DNI">DNI</option>
+              <option value="RG">RG</option>
+              <option value="PASSPORT">Passport</option>
+            </select>
+          </div>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Document Number</label>
+        <div class="control has-icons-left">
+          <input type="number" name="documentNumber" class="input" placeholder="Document Number" value="{{ user.documentNumber if user}}" required>
+          <span class="icon is-left">
+            <i class="fas fa-id-card"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+      <label class="label">Nationality</label>
+      <div class="control has-icons-left">
+        <input type="text" name="nationality" class="input" placeholder="Nationality" value="{{ user.nationality if user }}" required>
+        <span class="icon is-left">
+          <i class="fa-solid fa-earth-americas"></i>
+        </span>
+      </div>            
+    </div>
+
+    <div class="field">
+      <label class="label">Address</label>
+      <div class="control has-icons-left">
+        <input type="text" name="address" class="input" placeholder="Address" value="{{ user.address if user }}" required>
+        <span class="icon is-left">
+          <i class="fa-solid fa-earth-americas"></i>
+        </span>
+      </div>            
+    </div>
+
+
+    <div class="field">
+      <label class="label">Phone</label>
+      <div class="control has-icons-left">
+        <input type="number" name="phone" class="input" placeholder="Phone" value="{{ user.phone if user }}" required>
+        <span class="icon is-left">
+          <i class="fas fa-phone"></i>
+        </span>
+      </div>            
+    </div>
+
+    <div class="field">
+      <label class="label">E-mail</label>
+      <div class="control has-icons-left">
+        <input type="text" name="email" class="input" placeholder="E-Mail" value="{{ user.email if user }}" required>
+        <span class="icon is-left">
+          <i class="fa-solid fa-earth-americas"></i>
+        </span>
+      </div>            
+    </div>
+
+
+    <div class="field">
+      <label class="label">Birthdate</label>
+      <div class="control has-icons-left">
+        <input type="date" name="birthdate" class="input" placeholder="Birthdate" value="{{ user.birthdate if user }}" required>
+        <span class="icon is-left">
+          <i class="fas fa-birthday-cake"></i>
+        </span>
+      </div>            
+    </div>
+
+
+    <div class="buttons is-flex is-justify-content-center">
+        <a href="/user" class="button is-dark">Cancel</a>
+        <button type="submit" class="button is-link">Send</button>
+    </div>
+
+</form>
+
+{%block scripts %}
+  <script src='/scripts/userForm.js'></script>
+{%endblock%}

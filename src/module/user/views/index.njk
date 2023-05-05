@@ -1,0 +1,40 @@
+{% extends "views/layouts/base.njk" %}
+{% block body %}
+  <div class="has-text-centered">
+    <h2 class="is-size-3">Users</h2>
+  </div>
+  <p class="ml-1 is-size-5">Total users : {{users.length}}</p>
+  <div class="table-container is-size-5 is-striped has-text-centered is-hoverable is-fullwidth">
+    <table class="table" style="margin: auto;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>
+              <div class="buttons is-centered">
+                <a class="button is-info is-rounded" href="/user/view/{{user.id}}">View</a>
+                <a class="button is-success is-rounded" href="/user/edit/{{user.id}}">Edit</a>
+                <a class="button is-danger is-rounded" href="/user/delete/{{user.id}}">Delete</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if users.length === 0 %}
+    <div class="has-text-centered mt-5">
+      <a class="button is-info is-rounded" href="/user/create">Add a new user</a>
+    </div>
+  {% endif %}
+{% endblock %}

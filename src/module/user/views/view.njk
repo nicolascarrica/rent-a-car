@@ -1,0 +1,82 @@
+{% extends "views/layouts/base.njk" %}
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <p class="card-header-title">User Details</p>
+        </div>
+        <div class="card-content">
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-size-5">
+                    <tbody>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Document Type</td>
+                            <td>{{ user.documentType }}</td>
+                        </tr>
+                        <tr>
+                            <td>Document Number</td>
+                            <td>{{ user.documentNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nationality</td>
+                            <td>{{ user.nationality }}</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        <tr>
+                            <td>E-Mail</td>
+                            <td>{{ user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Birthdate</td>
+                            <td>{{ user.birthdate }}</td>
+                        </tr>                       
+                    </tbody>
+                </table>
+            </div>
+            <div class="has-text-centered">
+                <a class="button is-success is-rounded" href="/user/edit/{{user.id}}">Edit</a>
+                <a class="button is-danger is-rounded" href="/user/delete/{{user.id}}">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification mt-5">
+        <p class='is-size-4 has-text-centered'>Reservation</p>
+        {% for reservation in user.reservations %}
+            <div class="table-container mt-1">
+                <table class="table is-hoverable is-fullwidth is-size-6">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Star date</th>
+                            <th>End date</th>
+                            <th>Total price</th>
+                            <th>Paid?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

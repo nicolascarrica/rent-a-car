@@ -1,0 +1,64 @@
+{% extends "views/layouts/base.njk" %}
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <p class="card-header-title">Car Details</p>
+        </div>
+        <figure class="image mt-2 mx-3">
+            <img src="/../{{car.img}}" alt="car-image"  style="max-width: 250px;">
+        </figure>
+        <div class="card-content">
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-size-5">
+                    <tbody>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{ car.id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Brand</td>
+                            <td>{{ car.brand }}</td>
+                        </tr>
+                        <tr>
+                            <td>Model</td>
+                            <td>{{ car.model }}</td>
+                        </tr>
+                        <tr>
+                            <td>Year</td>
+                            <td>{{ car.year }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kms</td>
+                            <td>{{ car.km }}</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>{{ car.color }}</td>
+                        </tr>
+                        <tr>
+                            <td>Air Conditioning</td>
+                            <td>{{ car.air }}</td>
+                        </tr>
+                        <tr>
+                            <td>Passengers</td>
+                            <td>{{ car.passenger}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>{{ car.transmission }}</td>
+                        </tr>
+                        <tr>
+                            <td>Price for dar</td>
+                            <td>{{ car.price }}</td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="has-text-centered">
+                <a class="button is-success is-rounded" href="/car/edit/{{car.id}}">Edit</a>
+                <a class="button is-danger is-rounded" href="/car/delete/{{car.id}}">Delete</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

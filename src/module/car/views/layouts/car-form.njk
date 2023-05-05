@@ -1,0 +1,122 @@
+<form method="POST" action="/car/save" enctype='multipart/form-data'>
+    {% if car %}
+        <input type="text" name="id" value="{{ car.id }}" hidden readonly>
+    {% endif %}
+
+    <div class="field">
+        <label class="label">Brand</label>
+        <div class="control has-icons-left">
+          <input type="text" name="brand" class="input" placeholder="Brand Name" value="{{ car.brand if car }}" required>
+          <span class="icon is-left">
+            <i class="fas fa-car"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Model</label>
+        <div class="control has-icons-left">
+          <input type="text" name="model" class="input" placeholder="Car Model" value="{{ car.model if car }}" required>
+          <span class="icon is-left">
+            <i class="fas fa-car"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Year</label>
+        <div class="control has-icons-left">
+          <input type="number" id='year' name="year" class="input" placeholder="Year" value="{{ car.year if car }}" required>
+          <span class="icon is-left">
+            <i class="fa-solid fa-calendar-days"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label class="label">Kms</label>
+        <div class="control has-icons-left">
+          <input type="number" name="km" class="input" placeholder="Kms" value="{{ car.km if car }}" required>
+          <span class="icon is-left">
+            <i class="fas fa-road"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+      <label class="label">Color</label>
+      <div class="control has-icons-left">
+        <input type="text" name="color" class="input" placeholder="Color" value="{{ car.color if car }}" required>
+        <span class="icon is-left">
+          <i class="fa-solid fa-palette"></i>
+        </span>
+      </div>            
+    </div>
+
+  <div class="field">
+    <label class="label">Does it have air conditioning?</label>
+    <div class="control">
+      <label class="radio">
+        <input type="radio" name="air" value="Yes" checked required>
+        Yes
+      </label>
+      <label class="radio">
+        <input type="radio" name="air" value="No" required>
+        No
+      </label>
+    </div>         
+  </div>
+
+  <div class="field">
+    <label class="label">Passengers</label>
+    <div class="control has-icons-left">
+      <input min=1 name="passenger" class="input" type="number" placeholder="Number of passengers" value="{{ car.passenger if car }}" required>
+      <span class="icon is-left">
+        <i class="fas fa-road"></i>
+      </span>
+    </div>            
+  </div>
+
+  <div class="field">
+    <label class="label">Transmission</label>
+    <div class="control">
+      <div class="select">
+        <select name="transmission" required>
+          <option value="" disabled>Select an option</option>
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Price for day</label>
+    <div class="control has-icons-left">
+      <input type="number" name="price" class="input" placeholder="$/day" value="{{ car.price if car }}" required>
+      <span class="icon is-left">
+        <i class="fa-sharp fa-solid fa-dollar-sign"></i>
+      </span>
+    </div>            
+  </div>
+
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <figure class="img">
+        <img alt="Image of the car" src="{{ 'https://www.vw.com/web/vw/vci2/assets/images/vehicle-none.png' if not car else car.img.replace('public', '') }}">
+      </figure>
+      <input name="img" class="input" type="file" {{"required" if not car}}>
+    </div>
+  </div>
+
+  <div class="buttons is-flex is-justify-content-center">
+    <a href="/car" class="button is-dark">Cancel</a>
+    <button type="submit" class="button is-link">Send</button>
+  </div>
+
+</form>
+
+{%block scripts %}
+  <script src='/scripts/carForm.js'></script>
+{%endblock%}

@@ -1,0 +1,44 @@
+{% extends "views/layouts/base.njk" %}
+{% block body %}
+  <div class="has-text-centered">
+    <h2 class="is-size-3">Cars</h2>
+  </div>
+  <p class="ml-1 is-size-5">Total cars : {{cars.length}}</p>
+  <div class="table-container is-size-5 is-striped has-text-centered is-hoverable is-fullwidth">
+    <table class="table" style="margin: auto;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th><abbr title="Mileage in kms">Kms</abbr></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for car in cars %}
+          <tr>
+            <td>{{car.id}}</td>
+            <td>{{car.brand}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.year}}</td>
+            <td>{{car.km}}</td>
+            <td>
+              <div class="buttons is-centered">
+                <a class="button is-info is-rounded" href="/car/view/{{car.id}}">View</a>
+                <a class="button is-success is-rounded" href="/car/edit/{{car.id}}">Edit</a>
+                <a class="button is-danger is-rounded" href="/car/delete/{{car.id}}">Delete</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if cars.length === 0 %}
+    <div class="has-text-centered mt-5">
+      <a class="button is-info is-rounded" href="/car/create">Add a new car</a>
+    </div>
+  {% endif %}
+{% endblock %}

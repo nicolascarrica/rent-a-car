@@ -1,0 +1,10 @@
+{% extends "views/layouts/base.njk" %}
+
+{% block body %}
+  <h2 class="is-size-2 has-text-centered mb-1"> Do you want to delete the car #{{id}}?</h2>
+
+  <form class="has-text-centered" method="POST" action={{"/car/delete/" + id}}>
+    <a class="button is-rounded is-dark is-outlined" href='/car'>No, go back</a>
+    <button type="submit" class="button is-rounded is-danger is-outlined">Yes, delete</button>
+  </form>
+{% endblock %}

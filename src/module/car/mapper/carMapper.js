@@ -1,0 +1,61 @@
+const Car = require('../entity/car');
+
+exports.fromModelToEntity = ({
+    id,
+    brand,
+    model,
+    km,
+    year,
+    color,
+    air,
+    passenger,
+    transmission,
+    price,
+    img,
+    reservations,
+    creationDate,
+    updatedDate,
+}) => new Car(
+    id,
+    brand,
+    model,
+    km,
+    year,
+    color,
+    air,
+    passenger,
+    transmission,
+    Number(price),
+    img,
+    reservations ? reservations.map(reservationMapper) : reservations,
+    creationDate,
+    updatedDate,
+
+)
+
+exports.fromFormToEntity =({
+    id,
+    brand,
+    model,
+    km,
+    year,
+    color,
+    air,
+    passenger,
+    transmission,
+    price,
+    img,
+   
+}) => new Car(
+    Number(id),
+    brand,
+    model,
+    Number(km),
+    Number(year),
+    color,
+    air,
+    Number(passenger),
+    transmission,
+    Number(price),
+    img,
+);

@@ -1,0 +1,55 @@
+{% extends "views/layouts/base.njk" %}
+{% block body %}
+  <div class="has-text-centered">
+    <h2 class="is-size-3">Reservations</h2>
+  </div>
+  <p class="ml-1 is-size-5">Total reservations : {{reservations.length}}</p>
+  <div class="table-container is-size-5 is-striped has-text-centered is-hoverable is-fullwidth">
+    <table class="table" style="margin: auto;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Start Date</th>
+          <th>Finish Date</th>
+          <th>Day Price</th>
+          <th>Total Price</th>
+          <th>Payment Method</th>
+          <th>Id Car</th>
+          <th>id User</th>
+          <th>Is Paid?</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reservation in reservations %}
+          <tr>
+            <td>{{reservation.id}}</td>
+            <td>{{reservation.startDate}}</td>
+            <td>{{reservation.finishDate}}</td>
+            <td>{{reservation.dayPrice}}</td>
+            <td>{{reservation.totalPrice}}</td>
+            <td>{{reservation.paymentMethod}}</td>
+            <td><a href="/car/view/{{ reservation.carId }}">{{ reservation.carId }}</a></td>
+            <td><a href="/user/view/{{ reservation.userId }}">{{ reservation.userId }}</a></td>
+            <td>{{ reservation.isPaid }}</td>
+
+            <td>
+              <div class="buttons is-centered">                
+                {% if reservation.isPaid === 'No' %}
+                <a href="/reservation/manage/pay/{{reservation.id}}" class="button is-warning">Pay</a>
+              {% endif %}
+                <a href="/reservation/edit/{{ reservation.id }}" class="button is-success is-rounded">Edit</a>
+                <a href="/reservation/delete/{{ reservation.id }}" class="button is-danger is-rounded">Delete</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if reservations.length === 0 %}
+    <div class="has-text-centered mt-5">
+      <a class="button is-info is-rounded" href="/reservation/create">Add a new reservation</a>
+    </div>
+  {% endif %}
+{% endblock %}

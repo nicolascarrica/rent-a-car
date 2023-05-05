@@ -1,0 +1,92 @@
+<form method="POST" action="/reservation/save">
+    {% if reservation %}
+        <input type="text" name="id" value="{{ reservation.id }}" hidden readonly>
+    {% endif %}
+
+    <div class="field">
+        <label for="user-id" class="label">User</label>
+        <div class="control select is-fullwidth">
+          <select name="user-id" >
+            {% for user in users %}
+              <option value="{{user.id}}">
+                {{user.id}} - {{user.firstName}} {{user.lastName}}
+              </option>             
+            {% endfor %}
+          </select>
+        </div>            
+    </div>
+
+
+    <div class="field">
+        <label for="car-id" class="label">Car</label>
+        <div class="control select is-fullwidth">
+          <select name="car-id" >
+            {% for car in cars %}
+              <option value={{car.id}}>
+                {{car.id}} - {{car.brand}} {{car.model}} {{car.year}} 
+              </option>             
+            {% endfor %}
+          </select>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label for="start-date" class="label">Start Date</label>
+        <div class="control has-icons-left">
+          <input type="date" id="start-date" name="start-date" class="input" placeholder="Start date" value="{{ reservation.startDate if reservation}}" required>
+          <span class="icon is-left">
+            <i class="fas fa-id-card"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+        <label for="finish-date" class="label">Finish Date</label>
+        <div class="control has-icons-left">
+          <input type="date" id="finish-date" name="finish-date" class="input" placeholder="Finish date" value="{{ reservation.finishDate if reservation}}" required>
+          <span class="icon is-left">
+            <i class="fas fa-id-card"></i>
+          </span>
+        </div>            
+    </div>
+
+    <div class="field">
+      <label class="label">Payment Method</label>
+      <div class="control has-icons-left">
+        <div class="select is-fullwidth">
+          <select name="payment-method" required>
+            <option value="cash" {{"selected" if reservation.paymentMethod === 'cash' }}>Cash</option>
+            <option value="card" {{"selected" if reservation.paymentMethod === 'card' }}>Credit card</option>
+          </select>
+        </div>
+        <span class="icon is-small is-left">
+          <i class="fas fa-credit-card"></i>
+        </span>
+      </div>            
+    </div>
+
+    <div class="field">
+      <label for="is-paid" class="label">Is Paid?</label>
+      <div class="control has-icons-left">
+        <div class="select is-fullwidth">
+          <select name="is-paid" required>
+            <option value="Yes">Yes</option>
+            <option value="No" >No</option>
+          </select>
+        </div>
+        <span class="icon is-small is-left">
+          <i class="fas fa-credit-card"></i>
+        </span>
+      </div>            
+    </div>
+
+    <div class="buttons is-flex is-justify-content-center">
+        <a href="/reservation" class="button is-dark">Cancel</a>
+        <button type="submit" class="button is-link">Send</button>
+    </div>
+
+</form>
+
+{%block scripts %}
+  <script src='/scripts/reservation-form.js'></script>
+{%endblock%}

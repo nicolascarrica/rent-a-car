@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/ab08b8898e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="/public/css/main.css" />    
+    <title>RENT-A-CAR</title>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/car">
+        <img src="/public/img/logo1.png" width="60" height="60">
+      </a>
+      
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+      
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">Home</a>
+        <a class="navbar-item" href="/car/create">Create Car</a>
+        <a class="navbar-item" href="/user/create">Create User</a>
+        <a class="navbar-item" href="/reservation/create">Create Reservation</a>
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">More</a>
+      
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/car">Manage Car</a>
+            <a class="navbar-item" href="/user">Manage User</a>
+            <a class="navbar-item" href="/reservation">Manage Reservation</a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">Report an issue</a>
+          </div>
+        </div>
+    </div>
+
+ 
+  </nav>
+
+  <div class="container is-max-desktop mt-6 mb-6">
+      {% block body %}{% endblock %}
+  </div>
+</body>
+<script src="https://kit.fontawesome.com/0096c34b8d.js" crossorigin="anonymous"></script>
+<script src="/scripts/navbar.js" ></script>
+{% block scripts %}{% endblock %}
+
+</html>
